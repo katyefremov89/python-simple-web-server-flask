@@ -1,6 +1,8 @@
 from flask import Flask
 from flask import url_for
 from flask import json
+from flask import request
+
 
 app = Flask(__name__)
 
@@ -51,6 +53,7 @@ def delete_cat_by_id(id):
 
 @app.route("/cats/<int:id>", methods=['PUT'])
 def edit_cat(id):
+    print(request.json)
     data = {'func_name': 'edit_cat'}
     response = app.response_class(
         response=json.dumps(data),
